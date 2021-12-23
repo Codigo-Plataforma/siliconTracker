@@ -7,6 +7,6 @@ public class LocationRequest {
     private String street;
     private String city;
     private int pinCode;
-    private int latitude;
-    private int longitude;
+    private String latitude;
+    private String longitude;
 }

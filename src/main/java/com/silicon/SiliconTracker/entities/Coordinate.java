@@ -10,6 +10,6 @@ import javax.persistence.Entity;
 @Getter
 @Setter
 public class Coordinate extends AbstractPersistable<Long> {
-    private int latitude;
-    private int longitude;
+    private String latitude;
+    private String longitude;
 }

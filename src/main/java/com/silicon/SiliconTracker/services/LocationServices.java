@@ -38,6 +38,7 @@ public class LocationServices {
         coordinate.setLatitude(locationRequest.getLatitude());
         coordinate.setLongitude(locationRequest.getLongitude());
         coordinateRepo.save(coordinate);
+        location.setCoordinate(coordinate);
 
         location.setLastUpdatedTime(LocalTime.now());
 
