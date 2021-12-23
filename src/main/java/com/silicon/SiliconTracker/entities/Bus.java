@@ -15,4 +15,6 @@ public class Bus extends AbstractPersistable<Long> {
     private int seatingCapacity;
     @OneToOne
     private Driver driver;
+    @OneToOne
+    private Location currentLocation;
 }

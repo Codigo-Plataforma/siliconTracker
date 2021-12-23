@@ -6,7 +6,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Getter
 @Setter
@@ -17,5 +17,5 @@ public class Location extends AbstractPersistable<Long> {
     private Coordinate coordinate;
     @OneToOne
     private Address address;
-    private LocalDateTime lastUpdatedTime;
+    private LocalTime lastUpdatedTime;
 }

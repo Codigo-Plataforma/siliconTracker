@@ -6,16 +6,16 @@ public class LocationResponse {
     private String street;
     private String city;
     private int pinCode;
-    private int x;
-    private int y;
+    private int latitude;
+    private int longitude;
     private String lastUpdatedTime;
 
     public LocationResponse(Location location){
         this.street = location.getAddress().getStreet();
         this.city = location.getAddress().getCity();
         this.pinCode = location.getAddress().getPinCode();
-        this.x = location.getCoordinate().getX();
-        this.y = location.getCoordinate().getY();
+        this.latitude = location.getCoordinate().getLatitude();
+        this.longitude = location.getCoordinate().getLongitude();
         this.lastUpdatedTime = location.getLastUpdatedTime().toString();
     }
 }
