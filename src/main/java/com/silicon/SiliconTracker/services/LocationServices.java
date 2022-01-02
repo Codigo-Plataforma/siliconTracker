@@ -33,7 +33,7 @@ public class LocationServices {
     }
 
     public List<LocationResponse> getLocation(int id){
-        Pageable paging = PageRequest.of(id, 3);
+        Pageable paging = PageRequest.of(id, 10);
         return locationRepo.findAll(paging).stream().map(LocationResponse::new).collect(Collectors.toList());
     }
 }
