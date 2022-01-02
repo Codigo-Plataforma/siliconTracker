@@ -1,8 +1,12 @@
 package com.silicon.SiliconTracker.dao;
 
-import com.silicon.SiliconTracker.entities.Location;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.silicon.SiliconTracker.entity.Location;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
 
-public interface LocationRepo extends JpaRepository<Location, Long> {
-    public Location findOneById(Long id);
+import java.util.List;
+
+@Repository
+public interface LocationRepo extends MongoRepository<Location, String> {
 }

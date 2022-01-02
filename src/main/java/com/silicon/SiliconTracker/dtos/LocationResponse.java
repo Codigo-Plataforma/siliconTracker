@@ -1,9 +1,13 @@
 package com.silicon.SiliconTracker.dtos;
 
-import com.silicon.SiliconTracker.entities.Location;
+import com.silicon.SiliconTracker.entity.Location;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class LocationResponse {
-    private String street;
+    private String address;
     private String city;
     private int pinCode;
     private String latitude;
@@ -11,11 +15,11 @@ public class LocationResponse {
     private String lastUpdatedTime;
 
     public LocationResponse(Location location){
-        this.street = location.getAddress().getStreet();
-        this.city = location.getAddress().getCity();
-        this.pinCode = location.getAddress().getPinCode();
-        this.latitude = location.getCoordinate().getLatitude();
-        this.longitude = location.getCoordinate().getLongitude();
-        this.lastUpdatedTime = location.getLastUpdatedTime().toString();
+        this.address = location.getFullAddress();
+        this.city = location.getCity();
+        this.pinCode = location.getPinCode();
+        this.latitude = location.getLatitude();
+        this.longitude = location.getLongitude();
+        this.lastUpdatedTime = location.getUpdatedTime().toString();
     }
 }
