@@ -4,7 +4,7 @@ import lombok.Getter;
 
 @Getter
 public class LocationRequest {
-    private String street;
+    private String fullAddress;
     private String city;
     private int pinCode;
     private String latitude;
