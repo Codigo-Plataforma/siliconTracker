@@ -7,6 +7,7 @@ import com.silicon.SiliconTracker.entity.Location;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -23,11 +24,6 @@ public class LocationServices {
 
     public void updateLocation(Map<String, String> locationRequest){
         Location location = new Location();
-        System.out.println(locationRequest.get("fullAddress"));
-        System.out.println(locationRequest.get("city"));
-        System.out.println(locationRequest.get("pinCode"));
-        System.out.println(locationRequest.get("latitude"));
-        System.out.println(locationRequest.get("longitude"));
         location.setUid(UUID.randomUUID().toString());
         location.setFullAddress(locationRequest.get("fullAddress"));
         location.setCity(locationRequest.get("city"));
@@ -39,7 +35,7 @@ public class LocationServices {
     }
 
     public List<LocationResponse> getLocation(int id){
-        Pageable paging = PageRequest.of(id, 10);
+        Pageable paging = PageRequest.of(id, 10, Sort.by(Sort.Direction.DESC, "updatedTime"));
         return locationRepo.findAll(paging).stream().map(LocationResponse::new).collect(Collectors.toList());
     }
 }
