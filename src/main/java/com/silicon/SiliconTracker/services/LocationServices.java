@@ -23,6 +23,11 @@ public class LocationServices {
 
     public void updateLocation(Map<String, String> locationRequest){
         Location location = new Location();
+        System.out.println(locationRequest.get("fullAddress"));
+        System.out.println(locationRequest.get("city"));
+        System.out.println(locationRequest.get("pinCode"));
+        System.out.println(locationRequest.get("latitude"));
+        System.out.println(locationRequest.get("longitude"));
         location.setUid(UUID.randomUUID().toString());
         location.setFullAddress(locationRequest.get("fullAddress"));
         location.setCity(locationRequest.get("city"));
