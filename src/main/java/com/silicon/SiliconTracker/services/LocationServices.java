@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -20,14 +21,14 @@ public class LocationServices {
     @Autowired
     private LocationRepo locationRepo;
 
-    public void updateLocation(LocationRequest locationRequest){
+    public void updateLocation(Map<String, String> locationRequest){
         Location location = new Location();
         location.setUid(UUID.randomUUID().toString());
-        location.setFullAddress(locationRequest.getFullAddress());
-        location.setCity(locationRequest.getCity());
-        location.setPinCode(locationRequest.getPinCode());
-        location.setLatitude(locationRequest.getLatitude());
-        location.setLongitude(locationRequest.getLongitude());
+        location.setFullAddress(locationRequest.get("fullAddress"));
+        location.setCity(locationRequest.get("city"));
+        location.setPinCode(Integer.parseInt(locationRequest.get("pinCode")));
+        location.setLatitude(locationRequest.get("latitude"));
+        location.setLongitude(locationRequest.get("longitude"));
         location.setUpdatedTime(LocalDateTime.now());
         locationRepo.save(location);
     }

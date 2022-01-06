@@ -21,7 +21,7 @@ public class LocationController {
     private LocationServices locationServices;
 
     @PostMapping
-    public Map<String, String> updateLocation(@RequestBody LocationRequest locationRequest){
+    public Map<String, String> updateLocation(@RequestParam Map<String, String> locationRequest){
         locationServices.updateLocation(locationRequest);
         Map<String, String> response = new HashMap<>();
         response.put("code", "200");
