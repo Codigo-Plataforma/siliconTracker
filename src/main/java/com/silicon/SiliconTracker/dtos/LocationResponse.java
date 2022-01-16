@@ -20,6 +20,6 @@ public class LocationResponse {
         this.pinCode = location.getPinCode();
         this.latitude = location.getLatitude();
         this.longitude = location.getLongitude();
-        this.lastUpdatedTime = location.getUpdatedTime().toString();
+        this.lastUpdatedTime = location.getUpdatedTime();
     }
 }

@@ -18,5 +18,6 @@ public class Location {
     private int pinCode;
     private String latitude;
     private String longitude;
-    private LocalDateTime updatedTime;
+    private String updatedTime;
+    private LocalDateTime systemTime;
 }

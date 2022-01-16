@@ -10,10 +10,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,12 +30,15 @@ public class LocationServices {
         location.setPinCode(Integer.parseInt(locationRequest.get("pinCode")));
         location.setLatitude(locationRequest.get("latitude"));
         location.setLongitude(locationRequest.get("longitude"));
-        location.setUpdatedTime(LocalDateTime.now());
+        DateFormat dateFormat = new SimpleDateFormat("EEE, d MMM yyyy h:mm a");
+        dateFormat.setTimeZone(TimeZone.getTimeZone("IST"));
+        location.setUpdatedTime(dateFormat.format(new Date()).toString());
+        location.setSystemTime(LocalDateTime.now());
         locationRepo.save(location);
     }
 
     public List<LocationResponse> getLocation(int id){
-        Pageable paging = PageRequest.of(id, 10, Sort.by(Sort.Direction.DESC, "updatedTime"));
+        Pageable paging = PageRequest.of(id, 10, Sort.by(Sort.Direction.DESC, "systemTime"));
         return locationRepo.findAll(paging).stream().map(LocationResponse::new).collect(Collectors.toList());
     }
 }
